@@ -37,8 +37,14 @@ jobs:
         pip install -U pip;
         pip install -r requirements.txt --upgrade;
         pip install git+https://github.com/fabric8-analytics/fabric8-analytics-auth.git@fff8f49;
+        threshold=0.6
+        export MAJORITY_THRESHOLD=$threshold;
+        export DATA_DIR=.;
         export DISABLE_AUTHENTICATION=1;
         cp src/config.py.template src/config.py;
+        cd tests || exit;
+        mkdir testdir1;
+        mkdir testdir4;
         PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$(pwd) python "$(which pytest)" --cov=../src/ --cov-config .coveragerc --cov-report=xml --cov-fail-under=90 -vv .
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
