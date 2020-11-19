@@ -34,12 +34,12 @@ jobs:
       run: |
         pip install -U pip;
         pip install -r requirements.txt --upgrade;
-        pip install -r tests/requirements.txt;
-        pip install pytest;
-        pip install pytest-cov;
-        PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$(pwd) python "$(which pytest)" --cov=. --cov-config .coveragerc --cov-report=xml --cov-fail-under=80 -vv tests/
+        pip install git+https://github.com/fabric8-analytics/fabric8-analytics-auth.git@fff8f49;
+        export DISABLE_AUTHENTICATION=1;
+        cp src/config.py.template src/config.py;
+        PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$(pwd) python "$(which pytest)" --cov=../src/ --cov-config .coveragerc --cov-report=xml --cov-fail-under=90 -vv .
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: 1073459c-863a-4ff3-9847-8acbeaeb25e1 
+        token: 183ca5be-96e6-4125-b680-f4f519c76413
         file: ./coverage.xml
