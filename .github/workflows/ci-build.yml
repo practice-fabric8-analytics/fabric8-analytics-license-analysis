@@ -41,7 +41,9 @@ jobs:
         export MAJORITY_THRESHOLD=$threshold;
         export DATA_DIR=.;
         export DISABLE_AUTHENTICATION=1;
+        echo " i am here";
         cp src/config.py.template src/config.py;
+        echo " over";
         cd tests || exit;
         mkdir testdir1;
         mkdir testdir4;
