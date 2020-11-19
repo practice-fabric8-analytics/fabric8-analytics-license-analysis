@@ -25,9 +25,4 @@ radon mi -s -i venv .
 
 popd
 
-defects="$(radon mi -s -n B -i venv . | wc -l)"
-if [[ $defects -gt 0 ]]
-then
-    echo "File(s) with too low maintainability index detected!"
-    exit 1
-fi
+
