@@ -12,8 +12,8 @@ jobs:
         scripts:
           - run-linter
           - check-docstyle
-          - measure-cyclomatic-complexity
-          - measure-maintainability-index    
+          - detect-dead-code
+          - detect-common-errors
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
