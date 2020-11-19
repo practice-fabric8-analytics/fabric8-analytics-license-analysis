@@ -21,7 +21,7 @@ jobs:
       with:
         python-version: '3.6'
     - name: ${{ matrix.scripts }}
-      run: bash ${{ matrix.scripts }}.sh;
+      run: bash qa/${{ matrix.scripts }}.sh;
   Unit-Tests:
     runs-on: ubuntu-latest
     steps:
